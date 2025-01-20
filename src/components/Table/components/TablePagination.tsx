@@ -1,16 +1,16 @@
-import {Table} from "@tanstack/react-table";
+import {useContext} from "react";
+import {TableContext} from "../context/TableContext.tsx";
 
-type TablePaginationProps<TData> = {
-	table: Table<TData>
+type TablePaginationProps = {
 	pageSizes?: Array<number>
 }
 
-const TablePagination = <T extends { [key: string]: unknown }>({
-	table,
+const TablePagination = ({
 	pageSizes = [10, 20, 30, 40, 50]
-}: TablePaginationProps<T>) => {
+}: TablePaginationProps) => {
+	const { table } = useContext(TableContext)
 
-	return(
+		return(
 		<>
 				<button
 					onClick={() => table.firstPage()}
